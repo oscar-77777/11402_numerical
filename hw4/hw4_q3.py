@@ -13,18 +13,18 @@ def simpson_weights(count):
 
 
 def double_simpson(func, left, right, low, high, n, m):
-    hx = (right - left) / n
-    wx = simpson_weights(n)
+    hx = (right - left) / (2 * n)
+    wx = simpson_weights(2 * n)
     total = 0.0
 
-    for i in range(n + 1):
+    for i in range(2 * n + 1):
         x = left + i * hx
         yl = low(x)
         yu = high(x)
-        hy = (yu - yl) / m
-        wy = simpson_weights(m)
+        hy = (yu - yl) / (2 * m)
+        wy = simpson_weights(2 * m)
         inner_sum = 0.0
-        for j in range(m + 1):
+        for j in range(2 * m + 1):
             y = yl + j * hy
             inner_sum += wy[j] * func(x, y)
         total += wx[i] * (hy / 3.0) * inner_sum

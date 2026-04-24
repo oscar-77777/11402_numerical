@@ -23,10 +23,14 @@ def main():
     n = 4
     i1 = composite_simpson(fa, 9.0, 1.0, 2 * n)
     i2 = composite_simpson(fb, 1.0, 1e-4, 2 * n)
+    ref_i1 = composite_simpson(fa, 9.0, 1.0, 400)
+    ref_i2 = composite_simpson(fb, 1.0, 1e-4, 400)
 
-    print("HW4 Q4")
-    print(f"a: {i1:.6f}")
-    print(f"b: {i2:.6f}")
+    print("HW4 Q4: transformed integrals by composite Simpson")
+    print(f"Part (a) Simpson (2n=8) : {i1:.12f} (error={abs(i1 - ref_i1):.3e})")
+    print(f"Part (b) Simpson (2n=8) : {i2:.12f} (error={abs(i2 - ref_i2):.3e})")
+    print(f"Reference (a)           : {ref_i1:.12f}")
+    print(f"Reference (b)           : {ref_i2:.12f}")
 
 
 if __name__ == "__main__":
